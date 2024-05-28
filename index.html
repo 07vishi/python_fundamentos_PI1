@@ -1,38 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Tabela Organizada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 18px;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+        }
+        thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-danger {
+            background-color: #f44336;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="table-container">
+        <table border="1" class="dataframe">
+            <thead>
+                <tr style="text-align: right;">
+                    <th>_id</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6655b370b880afec2b80f810</td>
+                    <td>Aluguel</td>
+                    <td>1500.0</td>
+                    <td>2024-05-28 11:35:28.472</td>
+                </tr>
+                <tr>
+                    <td>6655b370b880afec2b80f811</td>
+                    <td>Supermercado</td>
+                    <td>800.0</td>
+                    <td>2024-05-28 11:35:28.473</td>
+                </tr>
+                <tr>
+                    <td>6655b370b880afec2b80f812</td>
+                    <td>Escola</td>
+                    <td>600.0</td>
+                    <td>2024-05-28 11:35:28.473</td>
+                </tr>
+                <tr>
+                    <td>6655b370b880afec2b80f813</td>
+                    <td>Transporte</td>
+                    <td>300.0</td>
+                    <td>2024-05-28 11:35:28.473</td>
+                </tr>
+                <tr>
+                    <td>6655b3d4db51c4b77257a170</td>
+                    <td>cão</td>
+                    <td>20.0</td>
+                    <td>2024-05-28 11:37:08.231</td>
+                </tr>
+                <tr>
+                    <td>6655c0fa56b678ebf4a84cb5</td>
+                    <td>chocolate</td>
+                    <td>15.0</td>
+                    <td>2024-05-28 12:33:14.853</td>
+                </tr>
+                <div class="table-container">
+                  <table border="1" class="dataframe">
+                      <thead>
+                          <tr>
+                              <th>Descrição</th>
+                              <th>Valor</th>
+                              <th>Data</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for despesa in df_despesas %}
+                          <tr>
+                              <td>{{ despesa['Descrição'] }}</td>
+                              <td>{{ despesa['Valor'] }}</td>
+                              <td>{{ despesa['Data'] }}</td>
+                          </tr>
+                          {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <button class="btn" onclick="adicionar()">Adicionar</button>
+    <button class="btn btn-danger" onclick="remover()">Remover</button>
+    <button class="btn" onclick="sair()">Sair</button>
 
-    <pre>Tópicos sobre o nosso trabalho
+    <script>
+        function adicionar() {
+            alert("Botão Adicionar clicado!");
+            // Adicione aqui o código para adicionar um novo item à tabela
+        }
 
-        Problema: O problema que nós encontramos foi que muita gente hoje em dia não sabe gerir o seu dinheiro por conta
-        das despesas elevadas e em grande quantidade...
+        function remover() {
+            alert("Botão Remover clicado!");
+            // Adicione aqui o código para remover um item da tabela
+        }
 
-        Solução: A solução que encontramos para tentar resolver esse problema foi criar uma Database que irá armazenar
-        os dados de todas as despesas da pessoa que irá utilizar a nossa aplicação. A pessoa vai conseguir atualizar as
-        despesas á medida que vão aparecendo e vai também conseguir colocar se já pagou ou não as despesas pendentes.
-
-        - Antes de tudo eu e o Gonçalo conversamos a cerca do trabalho e depois explicamos á Vishwa em inglês o que era
-        pretendido.
-
-        - Pensamos em fazer um jogo porém não iria atender a todos os requisitos que o nosso professor nos deu.
-
-        - Depois pesquisamos algumas ideias no chatgpt porque não conseguíamos imaginar um projeto que atendesse a todos
-        os requisitos pedidos.
-
-        - Ele deu-nos algumas opções e achamos interessante a ideia das despesas até pelos exemplos que vemos tanto na
-        internet como em casa. Todos nos concordamos com a ideia, questionamos o professor e ele apoiou a nossa ideia
-        também.</pregit>
-    <a
-        href="https://lucid.app/lucidchart/937dd6d5-cbba-44d1-ab90-32fb236a8ab3/edit?beaconFlowId=EC4E61A9034B6C11&invitationId=inv_4f766d60-0501-4c98-98c7-87e223923e44&page=0_0#">
-        The UML OF OUR WORK
-    </a>
+        function sair() {
+            alert("Botão Sair clicado!");
+            // Adicione aqui o código para sair da página ou realizar outra ação desejada
+        }
+    </script>
 </body>
-
 </html>
+>>>>>>> 78acc12 (adding login details)
