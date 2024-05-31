@@ -1,0 +1,70 @@
+/* Estilo do corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilo do container da tabela */
+.table-container {
+    overflow-x: auto;
+}
+
+/* Estilo da tabela */
+.dataframe {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+/* Estilo do cabeçalho da tabela */
+.dataframe th {
+    background-color: #009879;
+    color: #ffffff;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Estilo das células da tabela */
+.dataframe td {
+    padding: 12px 15px;
+}
+
+/* Estilo das linhas alternadas */
+.dataframe tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilo das linhas quando hover */
+.dataframe tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Estilo dos botões */
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Estilo do botão de remover (botão vermelho) */
+.btn.btn-danger {
+    background-color: #f44336;
+}
+
+/* Estilo dos botões quando hover */
+.btn:hover {
+    background-color: #707070;
+}

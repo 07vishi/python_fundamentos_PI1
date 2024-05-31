@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela Organizada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="table-container">
+        <table border="1" class="dataframe">
+            <thead>
+                <tr style="text-align: right;">
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for despesa in df_despesas %}
+                <tr data-id="{{ despesa['_id']['$oid'] }}">
+                    <td>{{ despesa['Descrição'] }}</td>
+                    <td>{{ despesa['Valor'] }}</td>
+                    <td>{{ despesa['Data'] }}</td>
+                    <td>
+                        <button class="remover" data-id="{{ despesa['_id']['$oid'] }}">Remover</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <p>Saldo Restante: R$ {{ saldo_restante }}</p>
+    </div>
+
+    <form action="/adicionar" method="post">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required><br>
+        <label for="valor">Valor:</label>
+        <input type="text" id="valor" name="valor" required><br>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <form action="/exportar" method="get">
+        <button type="submit">Exportar</button>
+    </form>
+
+    <form action="/sair" method="post">
+        <button type="submit">Sair</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            $(".remover").click(function() {
+                var despesaId = $(this).data("id");
+                $.ajax({
+                    url: "/remover/" + despesaId,
+                    type: "POST",  // Envia uma solicitação POST para a rota de remoção
+                    success: function(result) {
+                        $("tr[data-id='" + despesaId + "']").remove();
+                        alert("Despesa removida com sucesso!");
+                    },
+                    error: function(error) {
+                        alert("Erro ao remover despesa");
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
